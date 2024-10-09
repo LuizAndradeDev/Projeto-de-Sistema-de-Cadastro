@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastro</title>
+	<style>
+.booter {
+	background-color: #1c1c1c; /* Cor de fundo do rodapé */
+	color: #fff; /* Cor do texto do rodapé */
+	padding: 5px; /* Espaçamento interno do rodapé */
+	width: 100%;
+	left: 5px;
+	bottom: 5px;
+	border-radius: 5px;
+}
+
+.booter button {
+	background-color: #1c1c1c; /* Cor de fundo dos botões */
+	color: #fff; /* Cor do texto dos botões */
+	border: none; /* Remover borda dos botões */
+	padding: 5px 15px; /* Espaçamento interno dos botões */
+	margin-right: 15px; /* Espaçamento entre os botões */
+	border-radius: 7px; /* Bordas arredondadas dos botões */
+}
+
+.booter button:hover {
+	background-color: #363636;
+	/* Cor de fundo dos botões ao passar o mouse */
+	color: #fff; /* Cor do texto dos botões ao passar o mouse */
+	cursor: pointer; /* Alterar o cursor ao passar o mouse */
+}
+
+.content {
+	width: 60%; /* Definindo a largura da área de conteúdo */
+	margin: 0 auto; /* Centralizando horizontalmente */
+	padding: 14px; /* Espaçamento interno */
+	background-color: #f0f0f0; /* Cor de fundo da área de conteúdo */
+	border: 1px solid #ccc; /* Borda */
+}
+</style>
+</h:head>
+<h:form id="footerForm" rendered="#{usuarioLogado != null}">
+	<div class="booter">
+		<p:button icon="pi pi-home" styleClass="ui-button"
+			outcome="CadastroPrincipal" value="Cadastro" />
+
+		<p:button value="Gerenciar" icon="pi pi-cog" styleClass="ui-button"
+			rendered="#{loginUsuarioBean.verificarPermissao()}"
+			outcome="Gerenciador" />
+
+
+
+		<p:commandButton value="Logout" icon="pi pi-sign-out"
+			styleClass="ui-button" style="float: right;"
+			action="#{loginUsuarioBean.deslogar()}" />
+
+		<p:button value="Perfil" icon="pi pi-user" styleClass="ui-button"
+			style="float: right;" outcome="Perfil" />
+	</div>
+</h:form>
+
+
+<h:form id="footerForm2" rendered="#{usuarioLogado == null}">
+	<div class="booter">
+
+		<p:button icon="pi pi-home" styleClass="ui-button"
+			outcome="CadastroPrincipal" value="Cadastro" />
+		<p:button value="Login" icon="pi pi-sign-in" styleClass="ui-button"
+			style="float: right;" outcome="Login" />
+	</div>
+</h:form>
+<h:body>
+	<ui:insert name="titulo"></ui:insert>
+	<ui:insert name="conteudo"></ui:insert>
+	<ui:insert name="conteudo2"></ui:insert>
+</h:body>
+</html>

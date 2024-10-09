@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+
+	<ui:define name="titulo">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<img src="#{request.contextPath}/resources/img/usericon.png"
+			alt="usericon" style="display: block; margin: 0 auto;" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<div class="card">
+			<p:panelGrid columns="3" style="width: 60%; margin: 0 auto;">
+				<f:facet name="header">
+					<p:graphicImage name="resources/img/user.png" />
+				</f:facet>
+
+				<p:outputLabel value="Email:" />
+				<h:outputText value="#{loginUsuarioBean.usuarioLogado.email}" />
+				<h:outputText value="" />
+
+				<p:outputLabel value="Nome:" />
+				<h:outputText value="#{loginUsuarioBean.usuarioLogado.nome}" />
+				<p:commandButton value="Editar"
+					oncomplete="PF('editNomeDialog').show()" update="editNomeDialog" />
+
+				<p:outputLabel value="Senha:" />
+				<h:outputText value="**********" />
+				<p:commandButton value="Editar"
+					oncomplete="PF('editSenhaDialog').show()" update="editSenhaDialog" />
+
+				<p:outputLabel value="Nivel:" />
+				<h:outputText value="#{loginUsuarioBean.usuarioLogado.nivel}" />
+				<h:outputText value="" />
+			</p:panelGrid>
+		</div>
+
+
+		<p:dialog id="editNomeDialog" widgetVar="editNomeDialog"
+			header="Editar Nome" modal="true" width="500" height="100">
+			<h:form id="editNomeForm">
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Nome:" />
+					<p:inputText value="#{loginUsuarioBean.usuarioLogado.nome}" />
+
+					<p:commandButton value="Salvar"
+						action="#{loginUsuarioBean.atualizarUsuario()}" update="@form"
+						oncomplete="PF('editNomeDialog').hide()" />
+					<p:commandButton value="Cancelar"
+						onclick="PF('editNomeDialog').hide(); return false;" />
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>
+
+		
+		<p:dialog id="editSenhaDialog" widgetVar="editSenhaDialog"
+			header="Editar Senha" modal="true" width="500" height="100">
+			<h:form id="editSenhaForm">
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Senha:" />
+					<p:password value="#{loginUsuarioBean.usuarioLogado.senha}" />
+
+					<p:commandButton value="Salvar"
+						action="#{loginUsuarioBean.atualizarUsuario()}" update="@form"
+						oncomplete="PF('editSenhaDialog').hide()" />
+					<p:commandButton value="Cancelar"
+						onclick="PF('editSenhaDialog').hide(); return false;" />
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>
+</html>
