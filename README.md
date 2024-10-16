@@ -10,12 +10,14 @@ Edição de registros: Possibilita a modificação de informações previamente 
 Exclusão de registros: Dá a opção de remover registros desnecessários.
 Consulta de dados: Exibe uma lista com filtros e opções de busca, facilitando a navegação pelos registros.
 Relatórios: Geração de relatórios em PDF utilizando iReport para uma visão consolidada dos dados.
+Criação de usuarios: Você pode criar um usuario para logar e fazer as modificações
+Gerenciamento de permissões: usuarios são divididos entre usuarios normais e administradores, administradores tem acesso a uma tela extra pra poder excluir e mudar a permissão de outros usuarios
 
 Tecnologias Utilizadas
 
 Back-End: Java, Hibernate, JPA
 Front-End: JSF, PrimeFaces, HTML, CSS
-Banco de Dados: MySQL/SQL
+Banco de Dados: PostgresSQL
 Relatórios: iReport
 Ambiente de Desenvolvimento: WildFly
 
